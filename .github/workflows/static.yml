@@ -39,7 +39,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build -- --base=/test-repo/
+        run: npm run build -- --base=/poprawa10/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
