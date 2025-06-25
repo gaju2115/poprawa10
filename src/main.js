@@ -1,35 +1,20 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1 class="bg-mint-500">Hello Vite!</h1> 
-    <div class="card">
-      <button id="counter" class="p-4" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector('#counter'))
+
+  
+
+
 const apiUrl = 'https://uwfqtufnoevxgzuyaavr.supabase.co';
 const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3ZnF0dWZub2V2eGd6dXlhYXZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NTIyOTUsImV4cCI6MjA2NDUyODI5NX0.Er7t7Cz-vjAT-d8FG1fveeuxOcNByAmBLSNj2IVQdnk';
 
 const fetchArticles = async () => {
 
   try {
-    const response = await fetch(`${apiUrl}?select=*`, {
+    const response = await fetch(`${apiUrl}/rest/v1/article?select=*`, {
       headers: {
         apiKey: apiKey,
         Authorization: `Bearer ${apiKey}`,
@@ -70,7 +55,7 @@ const renderArticles = (articles) => {
 
 const createNewArticle = async (article) => {
   try {
-    const response = await fetch(apiUrl, {
+    const response = await fetch(`${apiUrl}/rest/v1/article`, {
       method: 'POST',
       headers: {
         apiKey: apiKey,
